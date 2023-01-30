@@ -33,15 +33,15 @@
   color: #000000; 
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 980px) {
   .promo {
     padding: 20px 20px 0;
   }
   
   .promo__container {
-    max-width: 728px;
     min-height: 834px;
   }
+  
   .promo__title {
     max-width: 680px;
     font-size: 40px;
@@ -50,14 +50,13 @@
   }
 }
 
-@media screen and (max-width: 624px) {
+@media screen and (max-width: 560px) {
   .promo {
     display: flex;
     padding: 14px 14px 0;
   }
 
   .promo__container {
-    max-width: 292px;
     min-height: 586px;
     
   }

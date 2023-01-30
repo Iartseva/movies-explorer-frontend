@@ -106,7 +106,7 @@
   opacity: .7;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 980px) {
   .profile__title {
     margin: 236px auto 96px;
   }
@@ -120,7 +120,7 @@
   }
 }
 
-@media screen and (max-width: 624px) {
+@media screen and (max-width: 560px) {
   .profile__title {
     margin: 70px auto 80px;
   }

@@ -83,13 +83,13 @@
   background-position: center;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 980px) {
   .moviescard__image {
     height: 190px;
   }
 }
 
-@media screen and (max-width: 624px) {
+@media screen and (max-width: 560px) {
   .moviescard__info {
     margin: 14px;
   }

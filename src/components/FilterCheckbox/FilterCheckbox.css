@@ -49,13 +49,13 @@
   margin-left: 12px;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 980px) {
   .filtercheckbox {
     margin-bottom: 52px;
   }
 }
 
-@media screen and (max-width: 624px) {
+@media screen and (max-width: 560px) {
   .filtercheckbox__text {
     font-size: 11px;
   }

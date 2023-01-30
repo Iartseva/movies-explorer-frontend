@@ -82,14 +82,13 @@
   transform:scale(1.2);
 }
 
-@media screen and (max-width: 1024px) {  
+@media screen and (max-width: 980px) {  
   .techs {
     padding: 90px 50px;
   }
   
   .techs__title {
     margin: 0 auto 80px;
-    max-width: 668px;
     min-height: 73px;
   }
  
@@ -116,14 +115,13 @@
   }
 }
 
-@media screen and (max-width: 624px) {  
+@media screen and (max-width: 560px) {  
   .techs {
     padding: 70px 18px;
     background: #FFFFFF;
   }
   
   .techs__title {
-    max-width: 284px;
     min-height: 50px;
     margin: 0 auto 60px;
     font-size: 18px;

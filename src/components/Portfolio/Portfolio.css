@@ -56,13 +56,12 @@
   border-bottom: none;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 980px) {
   .portfolio {
     padding: 0 50px 90px;
   }
   
   .portfolio__menu {
-    max-width: 668px;
     margin: 0 auto;
   }
 
@@ -75,17 +74,13 @@
   }
 }
 
-@media screen and (max-width: 624px) {
+@media screen and (max-width: 580px) {
   .portfolio {
     padding: 0 18px 70px;
   }
 
   .portfolio__title {
     font-size: 14px;
-  }
-
-  .portfolio__menu {
-    max-width: 292px;
   }
 
   .portfolio__menu-item {

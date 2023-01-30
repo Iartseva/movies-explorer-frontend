@@ -27,7 +27,7 @@
   transform:scale(1.2);
 }
 
-@media screen and (max-width: 624px) {
+@media screen and (max-width: 560px) {
   .navtab {
     max-width: 258px;
     margin-bottom: 20px;

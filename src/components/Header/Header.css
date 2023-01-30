@@ -110,9 +110,8 @@
   opacity: .7;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 980px) {
   .header {
-    max-width: 768px;
     padding: 18px 30px;
   }
 
@@ -135,9 +134,8 @@
   }
 }
 
-@media screen and (max-width: 624px) {
+@media screen and (max-width: 560px) {
   .header {
-    max-width: 320px;
     padding: 18px 14px;
   }
 
