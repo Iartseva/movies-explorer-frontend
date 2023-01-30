@@ -3,12 +3,15 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  padding: 110px 70px;
+  margin: 0 auto;
 }
 
 .about-project__title {
   max-width: 1140px;
-  margin: 110px 0 70px 70px;
+  width: 100%;
   padding-bottom: 23px;
+  margin: 0 auto 70px;
   box-sizing: border-box;
   font-style: normal;
   font-weight: 400;
@@ -20,7 +23,7 @@
 }
 
 .about-project__info {
-  padding: 0 70px 110px;
+  margin: 0 auto 110px;
   box-sizing: content-box;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -29,7 +32,6 @@
 }
 
 .about-project_subtitle {
-  margin: 0;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -39,7 +41,6 @@
 }
 
 .about-project_text {
-  margin: 0;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -48,7 +49,8 @@
 }
 
 .about-project__scope {
-  padding: 0 70px 110px;
+  width: 100%;
+  margin: 0 auto;
   box-sizing: content-box;
   display: grid;
   grid-template-columns: 1fr 4fr;
@@ -56,8 +58,6 @@
 }
 
 .about-project_scope-time {
-  margin: 0;
-  padding: 0;
   min-height: 36px;
   display: flex;
   align-items: center;
@@ -91,15 +91,20 @@
 }
 
 @media screen and (max-width: 1024px) {  
+  .about-project {
+    padding: 90px 50px;
+  }
+  
   .about-project__title {
     max-width: 668px;
-    margin: 90px 0 47px 50px;
+    padding-bottom: 46px;
+    margin-bottom: 47px;
     min-height: 73px;
   }
 
   .about-project__info {
     max-width: 668px;
-    padding: 0 50px 93px;
+    margin: 0 auto 93px;
     grid-row-gap: 22px;
     grid-column-gap: 30px;
   }
@@ -111,14 +116,18 @@
   
   .about-project__scope {
     max-width: 668px;
-    padding: 0 50px 93px;
   }
   }
 
 @media screen and (max-width: 624px) {  
+  .about-project {
+    padding: 70px 18px;
+  }
+  
   .about-project__title {
     max-width: 284px;
-    margin: 70px 0 60px 18px;
+    padding-bottom: 28px;
+    margin-bottom: 60px;
     min-height: 50px;
     font-size: 18px;
     line-height: 22px;
@@ -126,7 +135,7 @@
 
   .about-project__info {
     max-width: 284px;
-    padding: 0 18px 60px;
+    margin: 0 auto 60px;
     grid-template-columns: repeat(1, 1fr);
     grid-row-gap: 16px;
   }
@@ -160,7 +169,6 @@
   
   .about-project__scope {
     max-width: 284px;
-    padding: 0 18px 70px;
     grid-template-columns: 100px 1fr;
     grid-row-gap: 10px;
   }

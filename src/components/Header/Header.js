@@ -20,17 +20,17 @@ function Header() {
   return (
     <Switch>
       <Route path="/" exact>
-        <section className="header">
+        <header className="header">
           <Link to="/" className='header__logo'><img alt="логотип проекта" src={logo}></img></Link>
           <nav className='header__nav'>
             <Link to="/signup" className='header__nav-item'>Регистрация</Link>
             <Link to="/signin" className='header__nav-item'>Войти</Link>
           </nav> 
-        </section>
+        </header>
       </Route>
 
       <Route path={['/movies', '/saved-movies', '/profile']}>
-        <section className='header'>
+        <header className='header'>
           <Link to="/" className='header__logo'><img alt="логотип проекта" src={logo}></img></Link>
           <nav className='header__menu'>
             <Link to='/movies' className='header__menu-item'>Фильмы</Link>
@@ -39,11 +39,9 @@ function Header() {
           <Link to='/profile' className='header__account'>
             <img alt='переход в аккаунт' src={account} className='header__account-picture'></img>
           </Link>
-          <button onClick={handleMenuOpen} className="header__menu-button">
-              <img src={burger} alt='меню' />
-          </button>
+          <button onClick={handleMenuOpen} className="header__menu-button"></button>
           {isClicked ? <Navigation handleClose={handleMenuClose} /> : ''}
-        </section>
+        </header>
       </Route>
     </Switch>
   );

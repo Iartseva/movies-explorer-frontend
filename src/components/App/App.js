@@ -31,6 +31,7 @@ function App() {
           <Header />
           <SearchForm />
           <SavedMovies />
+          <Footer />
         </Route>
         <Route path="/profile">
           <Header />
