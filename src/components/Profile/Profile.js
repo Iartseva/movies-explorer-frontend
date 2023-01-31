@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import useValidation from "../../hooks/useValidation";
 import './Profile.css';
-import '../Form/Form.css'
+import '../Form/Form.css';
+import CurrentUserContext from '../../utils/CurrentUserContext';
 
 function Profile(props) {
   const { values, handleChange, errors, isValid, /* setValues, resetForm */ } =
@@ -10,6 +11,8 @@ function Profile(props) {
     email: "",
     password: "",
   });
+
+  const currentUser = useContext(CurrentUserContext);
 
   return (
     <section className="profile">

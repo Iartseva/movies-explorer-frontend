@@ -16,7 +16,6 @@
 }
 
 .searchform__form {
-  margin-bottom: 27px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -40,6 +39,22 @@
 
 .searchform__input:focus {
   outline: none;
+}
+
+.searchform__input-error {
+  width: 100%;
+  min-height: 27px;
+  margin: 0 auto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #EE3465;
+  visibility: hidden;
+}
+
+.searchform__input-error_visible {
+  visibility: visible;
 }
 
 .searchform__button {
@@ -75,10 +90,6 @@
 @media screen and (max-width: 560px) {
   .searchform {
     padding: 70px 14px 10px;
-  }
-
-  .searchform__form {
-    margin-bottom: 31px;
   }
 
   .searchform__input {
