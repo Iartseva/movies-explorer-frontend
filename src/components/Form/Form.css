@@ -1,0 +1,165 @@
+.form {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.form__logo {
+  width: 38px;
+  height: 38px;
+  margin-top: 64px;
+  margin-bottom: 40px;
+}
+
+.form__logo:hover {
+  opacity: .7;
+}
+
+.form-container {
+  max-width: 396px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.form__title {
+  margin-bottom: 40px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.form__input-label {
+  max-width: 396px;
+  width: 100%;
+  margin: 10px auto 20px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #A0A0A0;
+}
+
+.form__input {
+  max-width: 396px;
+  width: 100%;
+  height: 46px;
+  padding-left: 15px;
+  border: none;
+  margin-top: 10px;
+  background-color: #F9F9F9;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.form__input:focus {
+  outline: none;
+}
+
+.form__input-error {
+  max-width: 396px;
+  width: 100%;
+  min-height: 33px;
+  margin: 0 auto;
+  padding-top: 10px;
+  box-sizing: border-box;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #EE3465;
+  visibility: hidden;
+}
+
+.form__input-error_visible {
+  visibility: visible;
+}
+
+.form__button-submit {
+  max-width: 396px;
+  width: 100%;
+  height: 45px;
+  padding: 0;
+  border: none;
+  border-radius: 3px;
+  background: #2BE080;
+  margin: 49px auto 16px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.form__button-submit:hover {
+  opacity: .7;
+}
+
+.form__button-submit_type_login {
+  margin-top: 159px;
+}
+
+.form__redirect {
+  margin-bottom: 70px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #A0A0A0;
+}
+
+.form__redirect-link {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #2BE080;
+  margin-left: 6px;
+}
+
+.form__redirect-link:hover {
+  opacity: .4;
+}
+
+@media screen and (max-width: 980px) {
+  .form__input {
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .form__logo {
+    margin-top: 232px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .form-container {
+    max-width: 260px;
+  }
+
+  .form__logo {
+    margin: 56px auto 50px;
+  }
+
+  .form__title {
+    margin: 0 auto 80px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+  }
+
+  .form__button-submit_type_login {
+    margin-top: 247px;
+  }
+}
