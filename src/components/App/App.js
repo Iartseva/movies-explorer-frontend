@@ -34,6 +34,7 @@ function App() {
   const [isQueryError, setIsQueryError] = useState(false);
   const history = useHistory();
   const { pathname } = useLocation();
+  
 
   //регистрация
   function handleRegister(name, email, password) {
@@ -50,10 +51,10 @@ function App() {
   function handleLogin(email, password) {
     login(email, password)
       .then((res) => {
-        if (res) {
+        /* if (res) { */
           setIsLoggedIn(true);
           history.push("/movies");
-        }
+       /*  } */
       })
       .catch((err) => {
         console.log(`Ошибка: ${err}`);
@@ -150,7 +151,6 @@ function App() {
         .then((user) => {
           setIsLoggedIn(true);
           setCurrentUser(user);
-          history.push("/movies");
         })
         .catch((err) => console.log(`Ошибка: ${err}`));
     }
@@ -161,9 +161,10 @@ function App() {
     if (
       pathname === "/movies" ||
       pathname === "/saved-movies" ||
-      pathname === "/profile"
+      pathname === "/profile" /* ||
+      pathname === "/" */
     ) {
-      setIsLoggedIn(true);
+    setIsLoggedIn(true);
     }
   }, [pathname]);
 
@@ -172,17 +173,25 @@ function App() {
       <div className="page">
         <Switch>
           <Route path="/" exact>
-            <Header />
+            <Header isLoggedIn={isLoggedIn} />
             <Main />
             <Footer />
           </Route>
 
           <Route path="/signup">
-            <Register handleRegister={handleRegister} isLoggedIn={isLoggedIn} />
+            {/* {!isLoggedIn ? ( */}
+              <Register handleRegister={handleRegister} isLoggedIn={isLoggedIn}/>
+              {/* ) : (
+              <Redirect to="/" />
+              )} */}
           </Route>
 
           <Route path="/signin">
-            <Login handleLogin={handleLogin} isLoggedIn={isLoggedIn} />
+            {/* {!isLoggedIn ? ( */}
+              <Login handleLogin={handleLogin} isLoggedIn={isLoggedIn}/>
+           {/*  ) : (
+              <Redirect to="/" />
+            )} */}
           </Route>
 
           <ProtectedRoute
