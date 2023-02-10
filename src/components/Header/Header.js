@@ -3,7 +3,6 @@ import { Route, Switch, Link } from 'react-router-dom';
 import './Header.css';
 import logo from '../../images/logo-form.svg';
 import account from '../../images/account.svg';
-import burger from '../../images/burger.svg';
 import Navigation from '../Navigation/Navigation';
 
 function Header() {

@@ -5,7 +5,6 @@ import close from '../../images/close.svg';
 import account from '../../images/account.svg';
 
 function Navigation(props) {
-
   return (
     <section className="navigation">
       <img src={close} alt='кнопка закрытия' className='navigation__close-button' onClick={props.handleClose}></img>
