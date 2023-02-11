@@ -7,7 +7,11 @@
 Проект развернут на удаленном сервере. Данные для доступа: 
 
 diploma.iartseva.nomoredomainsclub.ru - фронтенд
+
 api.diploma.iartseva.nomoredomains.club - бэкенд
+
 130.193.51.15 - сервер
 
 Ссылка на макет: https://disk.yandex.ru/d/N7IqQ5_KeYr3VA
+
+Ссылка на пул-реквест: https://github.com/Iartseva/movies-explorer-frontend/pull/2
