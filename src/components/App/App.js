@@ -51,25 +51,23 @@ function App() {
   function handleLogin(email, password) {
     login(email, password)
       .then((res) => {
-        /* if (res) { */
+        if (res) {
           setIsLoggedIn(true);
           history.push("/movies");
-       /*  } */
+       }
       })
-      .catch((err) => {
-        console.log(`Ошибка: ${err}`);
-      });
+      .catch((err) => console.log(`Ошибка: ${err}`));
   }
 
   // выход
   function handleLogout() {
-    logout().then((res) => {
+    logout()
+    .then((res) => {
       setIsLoggedIn(false);
-      history.push("/signin");
-      /* .catch((err) => {
-        console.log(`Ошибка: ${err}`);
-      }) */
-    });
+      history.push("/");
+      console.log(isLoggedIn);
+    })
+    .catch((err) => console.log(`Ошибка: ${err}`))
   }
 
   // изменения пользователя
@@ -133,7 +131,6 @@ function App() {
 
   // установка сохраненных фильмов
   useEffect(() => {
-    if (isLoggedIn) {
       setIsLoading(true);
       getCards()
         .then((cards) => {
@@ -141,32 +138,25 @@ function App() {
         })
         .catch((err) => console.log(`Ошибка: ${err}`))
         .finally(() => setIsLoading(false));
-    }
   }, [isLoggedIn]);
 
   // установка первоночальных данных пользователя
   useEffect(() => {
-    if (isLoggedIn) {
       getUser()
         .then((user) => {
           setIsLoggedIn(true);
           setCurrentUser(user);
+          history.push(pathname);
         })
         .catch((err) => console.log(`Ошибка: ${err}`));
-    }
-  }, [isLoggedIn, history]);
+  }, [isLoggedIn, history, pathname]);
 
   // сохранение стейта
-  useEffect(() => {
-    if (
-      pathname === "/movies" ||
-      pathname === "/saved-movies" ||
-      pathname === "/profile" /* ||
-      pathname === "/" */
-    ) {
-    setIsLoggedIn(true);
+ /* useEffect(() => {
+    if (pathname === "/movies" || pathname === "/saved-movies" ||  pathname === "/profile" ) {
+      setIsLoggedIn(true);
     }
-  }, [pathname]);
+  }, [pathname]); */
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -179,19 +169,11 @@ function App() {
           </Route>
 
           <Route path="/signup">
-            {/* {!isLoggedIn ? ( */}
-              <Register handleRegister={handleRegister} isLoggedIn={isLoggedIn}/>
-              {/* ) : (
-              <Redirect to="/" />
-              )} */}
+            <Register handleRegister={handleRegister} />
           </Route>
 
           <Route path="/signin">
-            {/* {!isLoggedIn ? ( */}
-              <Login handleLogin={handleLogin} isLoggedIn={isLoggedIn}/>
-           {/*  ) : (
-              <Redirect to="/" />
-            )} */}
+            <Login handleLogin={handleLogin} />
           </Route>
 
           <ProtectedRoute
