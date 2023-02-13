@@ -4,6 +4,7 @@ import './Profile.css';
 import '../Form/Form.css';
 import CurrentUserContext from '../../utils/CurrentUserContext';
 import Header from "../Header/Header";
+import { regexEmail } from "../../utils/constants";
 
 function Profile(props) {
   const { values, handleChange, errors, isValid, resetForm } =
@@ -77,6 +78,7 @@ function Profile(props) {
               required
               onChange={handleChange}
               value={values.email || ""}
+              pattern={regexEmail}
             />
           </div>
           <span

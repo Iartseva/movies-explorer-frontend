@@ -4,9 +4,9 @@ import useValidation from "../../hooks/useValidation";
 import Form from '../Form/Form';
 import './Register.css';
 import '../Form/Form.css';
+import { regexEmail } from '../../utils/constants';
 
 function Register(props) {
-
   const { values, handleChange, errors, isValid, resetForm } =
   useValidation({
     name: "",
@@ -59,6 +59,7 @@ function Register(props) {
             required
             onChange={handleChange}
             value={values.email || ""}
+            pattern={regexEmail}
           />
           <span
             className={`form__input-error email-error ${

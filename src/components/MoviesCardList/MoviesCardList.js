@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import Preloader from '../Preloader/Preloader';
+import { SCREEN_L, SCREEN_S } from '../../utils/constants';
 
 function MoviesCardList(props) {
   const [shownCards, setShownCards] = useState(0);
@@ -10,10 +11,10 @@ function MoviesCardList(props) {
 
   function getshownCards() {
     const screensize = window.innerWidth;
-    if (screensize > 1280) {
+    if (screensize > SCREEN_L) {
       setShownCards(12);
     }
-    else if (screensize > 768 && screensize < 1280) {
+    else if (screensize > SCREEN_S && screensize < SCREEN_L) {
       setShownCards(8);
     }
     else {
@@ -23,10 +24,10 @@ function MoviesCardList(props) {
 
   function showMoreCards() {
     const screensize = window.innerWidth;
-    if (screensize > 1280) {
+    if (screensize > SCREEN_L) {
       setShownCards(shownCards + 3);
     }
-    else if (screensize > 768 && screensize < 1280) {
+    else if (screensize > SCREEN_S && screensize < SCREEN_L) {
       setShownCards(shownCards + 2);
     }
     else {

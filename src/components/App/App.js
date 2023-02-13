@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import { Route, Switch, useHistory, useLocation } from "react-router-dom";
+import { Route, Switch, useHistory, useLocation, Redirect } from "react-router-dom";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import Register from "../Register/Register";
@@ -65,7 +65,10 @@ function App() {
     .then((res) => {
       setIsLoggedIn(false);
       history.push("/");
-      console.log(isLoggedIn);
+      localStorage.removeItem('initialMovies');
+      localStorage.removeItem('foundmovies');
+      localStorage.removeItem('query');
+      localStorage.removeItem('shortfilms');
     })
     .catch((err) => console.log(`Ошибка: ${err}`))
   }
@@ -169,11 +172,19 @@ function App() {
           </Route>
 
           <Route path="/signup">
-            <Register handleRegister={handleRegister} />
+            {isLoggedIn ? (
+              <Redirect to="/movies" />
+            ) : (
+              <Register handleRegister={handleRegister} />
+            )}
           </Route>
 
           <Route path="/signin">
-            <Login handleLogin={handleLogin} />
+            {isLoggedIn ? (
+              <Redirect to="/movies" />
+            ) : (
+              <Login handleLogin={handleLogin} /> 
+            )}
           </Route>
 
           <ProtectedRoute

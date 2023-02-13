@@ -9,7 +9,7 @@ import '../MoviesCardList/MoviesCardList.css';
 function SavedMovies(props) {
   const [isCheckbox, setIsCheckbox] = useState(false); 
   const [initaialSavedMovies, setInitaialSavedMovies] = useState(props.savedMovies); 
-  const [newQuery, setNewQuery] = useState(''); 
+  const [querySaved, setQuerySaved] = useState(''); 
   const [isNotFoundError, setIsNotFoundError] = useState(false);
   
   // фильтрация короткометражек
@@ -28,36 +28,36 @@ function SavedMovies(props) {
   } 
 
   // сабмит поиска
-  function handleSearchMovies(query) {
-    setNewQuery(query);
+  function handleSearchSavedMovies(query) {
+    setQuerySaved(query);
   }
 
   // изменение чекбокса
   function handleCheckbox() {
     setIsCheckbox(!isCheckbox);
-    isCheckbox ? setInitaialSavedMovies(initaialSavedMovies) : setInitaialSavedMovies(filterDuration(initaialSavedMovies));
-    localStorage.setItem('shortfilms', !isCheckbox);
+    //isCheckbox ? setInitaialSavedMovies(initaialSavedMovies) : setInitaialSavedMovies(filterDuration(initaialSavedMovies));
+    //localStorage.setItem('shortfilms', !isCheckbox);
   }
 
   // отображение карточек
   useEffect(() => {
-    const moviesList = filterMovies(props.savedMovies, newQuery);  
+    const moviesList = filterMovies(props.savedMovies, querySaved);  
     if (isCheckbox) {
       setInitaialSavedMovies(filterDuration(moviesList))
     }
     else {
       setInitaialSavedMovies(moviesList);
     }
-  }, [isCheckbox, newQuery, props.savedMovies]);
+  }, [isCheckbox, querySaved, props.savedMovies]);
 
-  // установка положения чекбокса
+  /* // установка положения чекбокса
   useEffect(() => {
     if (localStorage.getItem('shortfilms') === 'true') {
       setIsCheckbox(true);
     } else {
       setIsCheckbox(false);
     }
-  }, []);
+  }, []); */
 
   // установка ошибки поиска
   useEffect(() => {
@@ -72,7 +72,7 @@ function SavedMovies(props) {
     <>
       <Header isLoggedIn={props.isLoggedIn} />
       <SearchForm 
-        onSearchMovies={handleSearchMovies} 
+        onSearchMovies={handleSearchSavedMovies} 
         isCheckbox={isCheckbox} 
         onCheckbox={handleCheckbox}/>
       <MoviesCardList

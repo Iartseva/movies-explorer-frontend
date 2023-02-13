@@ -9,7 +9,7 @@ function register(name, email, password) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({name, email, password}),
-  })/* .then(checkResponse) */;
+  }).then(checkResponse);
 }
 
 function login(email, password) {

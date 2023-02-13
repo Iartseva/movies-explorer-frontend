@@ -72,7 +72,7 @@ function Movies(props) {
 
   // установка ошибки поиска
   useEffect(() => {
-    if (foundAndCheckboxMovies.length === 0) {
+    if (localStorage.getItem('foundmovies') && foundAndCheckboxMovies.length === 0) {
       setIsNotFoundError(true);
     } else {
       setIsNotFoundError(false);

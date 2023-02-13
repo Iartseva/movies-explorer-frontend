@@ -6,9 +6,9 @@
 
 Проект развернут на удаленном сервере. Данные для доступа: 
 
-diploma.iartseva.nomoredomainsclub.ru - фронтенд
+https://diploma.iartseva.nomoredomainsclub.ru - фронтенд
 
-api.diploma.iartseva.nomoredomains.club - бэкенд
+https://api.diploma.iartseva.nomoredomains.club - бэкенд
 
 130.193.51.15 - сервер
 

@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './SearchForm.css';
 import '../Form/Form.css';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
-// import useValidation from '../../hooks/useValidation';
+import { useLocation } from 'react-router-dom';
 
 function SearchForm(props) {
 
   const [isQueryError, setIsQueryError] = useState(false);
   const [queryText, setQueryText] = useState('');
+  const { pathname } = useLocation();
   
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -27,9 +28,9 @@ function SearchForm(props) {
       sessionStorage.setItem('query', query);
     }
   */
-
+    
   useEffect(() => {
-    if (localStorage.getItem('query')) {
+    if (localStorage.getItem('query') && pathname === '/movies') {
       setQueryText(localStorage.getItem('query'));
     }
   }, []);

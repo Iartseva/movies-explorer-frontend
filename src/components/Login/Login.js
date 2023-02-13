@@ -4,6 +4,7 @@ import useValidation from "../../hooks/useValidation";
 import Form from '../Form/Form';
 import './Login.css';
 import '../Form/Form.css';
+import { regexEmail } from "../../utils/constants";
 
 function Login(props) {
   const { values, handleChange, errors, isValid, resetForm } =
@@ -36,6 +37,7 @@ function Login(props) {
             required
             onChange={handleChange}
             value={values.email || ""}
+            pattern={regexEmail}
           />
           <span
             className={`form__input-error email-error ${
