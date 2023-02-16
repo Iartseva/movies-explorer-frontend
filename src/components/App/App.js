@@ -32,6 +32,8 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isQueryError, setIsQueryError] = useState(false);
+  const [isRequestError, setIsRequestError] = useState(false);
+  const [requestErrorText, setRequestErrorText] = useState('');
   const history = useHistory();
   const { pathname } = useLocation();
   
@@ -44,6 +46,8 @@ function App() {
       })
       .catch((err) => {
         console.log(`Ошибка: ${err}`);
+        setIsRequestError(true);
+        setRequestErrorText(err);
       });
   }
 
@@ -53,11 +57,18 @@ function App() {
       .then((res) => {
         if (res) {
           setIsLoggedIn(true);
+          setCurrentUser(res);
           history.push("/movies");
+          //localStorage.setItem('token', isLoggedIn);
+          //console.log(localStorage.getItem('token'));
        }
       })
-      .catch((err) => console.log(`Ошибка: ${err}`));
-  }
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`);
+        setIsRequestError(true);
+        setRequestErrorText(err);
+      });
+      }
 
   // выход
   function handleLogout() {
@@ -80,7 +91,11 @@ function App() {
         setCurrentUser(res);
         setSuccessStatus(true);
       })
-      .catch((err) => console.log(`Ошибка: ${err}`));
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`);
+        setIsRequestError(true);
+        setRequestErrorText(err);
+      });
   }
 
   // сохранение карточки в избранном
@@ -89,7 +104,11 @@ function App() {
       .then((newSavedFilm) => {
         setSavedMovies([newSavedFilm, ...savedMovies]);
       })
-      .catch((err) => console.log(`Ошибка: ${err}`));
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`);
+        setIsRequestError(true);
+        setRequestErrorText(err);
+      });
   }
   // удаление карточки из сохраненной
   function handleCardDeleteLike(card) {
@@ -99,7 +118,11 @@ function App() {
           state.filter((item) => item._id !== card._id)
         );
       })
-      .catch((err) => console.log(`Ошибка: ${err}`));
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`);
+        setIsRequestError(true);
+        setRequestErrorText(err);
+      });
   }
 
   // получение первоначальных фильмов
@@ -145,14 +168,19 @@ function App() {
 
   // установка первоночальных данных пользователя
   useEffect(() => {
-      getUser()
-        .then((user) => {
-          setIsLoggedIn(true);
-          setCurrentUser(user);
-          history.push(pathname);
-        })
-        .catch((err) => console.log(`Ошибка: ${err}`));
-  }, [isLoggedIn, history, pathname]);
+    getUser()
+      .then((user) => {
+        setIsLoggedIn(true);
+        setCurrentUser(user);
+        history.push(pathname);
+    })
+    .catch((err) => console.log(`Ошибка: ${err}`));
+  }, [/*isLoggedIn,  history, pathname */]);
+
+  useEffect(() => {
+    setIsRequestError(false);
+    setRequestErrorText('');
+  }, [history, pathname]);
 
   // сохранение стейта
  /* useEffect(() => {
@@ -175,7 +203,7 @@ function App() {
             {isLoggedIn ? (
               <Redirect to="/movies" />
             ) : (
-              <Register handleRegister={handleRegister} />
+              <Register handleRegister={handleRegister} isRequestError={isRequestError} requestErrorText={requestErrorText}/>
             )}
           </Route>
 
@@ -183,7 +211,7 @@ function App() {
             {isLoggedIn ? (
               <Redirect to="/movies" />
             ) : (
-              <Login handleLogin={handleLogin} /> 
+              <Login handleLogin={handleLogin} isRequestError={isRequestError} requestErrorText={requestErrorText}/> 
             )}
           </Route>
 
@@ -195,7 +223,9 @@ function App() {
             handleLikeClick={handleCardLike}
             component={Movies}
             isLoading={isLoading}
-            isQueryError={isQueryError}>
+            isQueryError={isQueryError}
+            isRequestError={isRequestError} 
+            requestErrorText={requestErrorText}>
           </ProtectedRoute>
 
           <ProtectedRoute
@@ -205,6 +235,8 @@ function App() {
             onCardDelete={handleCardDeleteLike}
             component={SavedMovies}
             isLoading={isLoading}
+            isRequestError={isRequestError} 
+            requestErrorText={requestErrorText}
           ></ProtectedRoute>
 
           <ProtectedRoute
@@ -214,6 +246,8 @@ function App() {
             component={Profile}
             logout={handleLogout}
             handleChange={handleChange}
+            isRequestError={isRequestError} 
+            requestErrorText={requestErrorText}
           ></ProtectedRoute>
 
           <Route path="/*">

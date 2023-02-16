@@ -4,7 +4,6 @@ import './Profile.css';
 import '../Form/Form.css';
 import CurrentUserContext from '../../utils/CurrentUserContext';
 import Header from "../Header/Header";
-import { regexEmail } from "../../utils/constants";
 
 function Profile(props) {
   const { values, handleChange, errors, isValid, resetForm } =
@@ -78,7 +77,7 @@ function Profile(props) {
               required
               onChange={handleChange}
               value={values.email || ""}
-              pattern={regexEmail}
+              pattern="\S+@\S+\.\S+"
             />
           </div>
           <span
@@ -94,6 +93,13 @@ function Profile(props) {
             ) : (
               <span className='profile__success'>Данные успешно изменены</span>
             )}
+          <span
+            className={`form__request-error ${
+              !props.isRequestError ? "" : "form__request-error_visible"
+            }`}
+          >
+            {props.requestErrorText}
+          </span>
           <button
             className={`profile__button-submit ${isValid && isNewValues ? '' : 'profile__button-submit_disabled'}`}
             type="submit"

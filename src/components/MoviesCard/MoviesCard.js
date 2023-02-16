@@ -35,6 +35,13 @@ function MoviesCard(props) {
         ) : (
         <button type="button" className={props.saved ? 'moviescard__delete-from-saved' : 'moviescard__save'} onClick={props.isSavedFilms ? onDelete : onCardClick }>{props.saved ? '' : 'Сохранить'}</button>
       )}
+      <span
+            className={`moviescard__request-error ${
+              !props.isRequestError ? "" : "moviescard__request-error_visible"
+            }`}
+          >
+            {props.requestErrorText}
+        </span>
     </li>    
   );
 }

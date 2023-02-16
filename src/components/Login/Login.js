@@ -4,7 +4,6 @@ import useValidation from "../../hooks/useValidation";
 import Form from '../Form/Form';
 import './Login.css';
 import '../Form/Form.css';
-import { regexEmail } from "../../utils/constants";
 
 function Login(props) {
   const { values, handleChange, errors, isValid, resetForm } =
@@ -18,7 +17,7 @@ function Login(props) {
     if (isValid) {
       props.handleLogin(values.email, values.password);
     }
-    resetForm();
+    //resetForm();
   }
 
   return (
@@ -32,12 +31,12 @@ function Login(props) {
             name="email"
             type="email"
             placeholder="Email"
-            autoComplete="username"
+           // autoComplete="username"
             minLength={4}
             required
             onChange={handleChange}
             value={values.email || ""}
-            pattern={regexEmail}
+            pattern="\S+@\S+\.\S+"
           />
           <span
             className={`form__input-error email-error ${
@@ -68,10 +67,17 @@ function Login(props) {
             {errors.password}
           </span>
         </label>
+        <span
+            className={`form__request-error ${
+              !props.isRequestError ? "" : "form__request-error_visible"
+            }`}
+          >
+            {props.requestErrorText}
+          </span>
         <button
-          className="form__button-submit form__button-submit_type_login"
+          className={`form__button-submit form__button-submit_type_login ${isValid ? '' : 'form__button-submit_disabled'}`}
           type="submit"
-          //onClick={props.handleRegister}
+          disabled={!isValid}
         >
           Войти
         </button>

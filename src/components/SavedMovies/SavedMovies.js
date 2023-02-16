@@ -82,6 +82,8 @@ function SavedMovies(props) {
         cards={initaialSavedMovies}
         savedMovies={props.savedMovies}
         isLoading={props.isLoading}
+        isRequestError={props.isRequestError} 
+        requestErrorText={props.requestErrorText}
       />
       <Footer />
     </>

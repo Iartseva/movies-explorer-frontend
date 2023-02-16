@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
+import { FILTER_DURATION_VALUE } from "../../utils/constants";
 
 function Movies(props) {
   const [isCheckbox, setIsCheckbox] = useState(false);
@@ -12,7 +13,7 @@ function Movies(props) {
   
   // фильтрация короткометражек
   function filterDuration(movies) {
-    return movies.filter((movie) => movie.duration < 30);
+    return movies.filter((movie) => movie.duration < FILTER_DURATION_VALUE);
   }
 
   // поисковая строка
@@ -106,6 +107,8 @@ function Movies(props) {
         handleLikeClick={props.handleLikeClick}
         onCardDelete={props.onCardDelete}
         isLoading={props.isLoading}
+        isRequestError={props.isRequestError} 
+        requestErrorText={props.requestErrorText}
       />
       <Footer />
     </>

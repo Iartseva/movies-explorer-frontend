@@ -83,6 +83,24 @@
   background-position: center;
 }
 
+.moviescard__request-error {
+  max-width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #EE3465;
+  visibility: hidden;
+  display: none;
+}
+
+.moviescard__request-error_visible {
+  visibility: visible;
+  display: flex;
+}
+
 @media screen and (max-width: 980px) {
   .moviescard__image {
     height: 190px;

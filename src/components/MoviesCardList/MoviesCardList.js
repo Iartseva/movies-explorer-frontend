@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import Preloader from '../Preloader/Preloader';
-import { SCREEN_L, SCREEN_S } from '../../utils/constants';
+import { SCREEN_L, SCREEN_S, CARDCOUNT_FOR_L, CARDCOUNT_FOR_M, CARDCOUNT_FOR_S } from '../../utils/constants';
 
 function MoviesCardList(props) {
   const [shownCards, setShownCards] = useState(0);
@@ -12,13 +12,13 @@ function MoviesCardList(props) {
   function getshownCards() {
     const screensize = window.innerWidth;
     if (screensize > SCREEN_L) {
-      setShownCards(12);
+      setShownCards(CARDCOUNT_FOR_L);
     }
     else if (screensize > SCREEN_S && screensize < SCREEN_L) {
-      setShownCards(8);
+      setShownCards(CARDCOUNT_FOR_M);
     }
     else {
-      setShownCards(5);
+      setShownCards(CARDCOUNT_FOR_S);
     } 
   }
 
@@ -69,6 +69,8 @@ function MoviesCardList(props) {
                     saved={getSavedMovieCard(props.savedMovies, card)}
                     cards={props.cards}
                     card={card}
+                    isRequestError={props.isRequestError} 
+                    requestErrorText={props.requestErrorText}
                   />
                 ))}
               </ul>
@@ -92,6 +94,8 @@ function MoviesCardList(props) {
                   saved={getSavedMovieCard(props.savedMovies, card)}
                   cards={props.cards}
                   card={card}
+                  isRequestError={props.isRequestError} 
+                  requestErrorText={props.requestErrorText}
                 />
               ))}
           </ul>
