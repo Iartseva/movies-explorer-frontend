@@ -104,6 +104,10 @@
   opacity: .7;
 }
 
+.form__button-submit_disabled {
+  background: #a0a0a0;
+}
+
 .form__button-submit_type_login {
   margin-top: 159px;
 }
@@ -130,6 +134,25 @@
 
 .form__redirect-link:hover {
   opacity: .4;
+}
+
+.form__request-error {
+  max-width: 396px;
+  width: 100%;
+  min-height: 33px;
+  margin: 0 auto;
+  padding-top: 10px;
+  box-sizing: border-box;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #EE3465;
+  visibility: hidden;
+}
+
+.form__request-error_visible {
+  visibility: visible;
 }
 
 @media screen and (max-width: 980px) {

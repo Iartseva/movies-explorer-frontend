@@ -1,38 +1,63 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './SearchForm.css';
 import '../Form/Form.css';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
-import useValidation from '../../hooks/useValidation';
+import { useLocation } from 'react-router-dom';
 
-function SearchForm() {
-  const { values, handleChange, errors, isValid, setValues, resetForm } =
-  useValidation({
-    query: "",
-  });
+function SearchForm(props) {
+
+  const [isQueryError, setIsQueryError] = useState(false);
+  const [queryText, setQueryText] = useState('');
+  const { pathname } = useLocation();
+  
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    if (queryText.length === 0) {
+      setIsQueryError(true);
+    } else {
+      setIsQueryError(false);
+      props.onSearchMovies(queryText);
+    }
+  }
+
+  function handleChange(e) {
+    setQueryText(e.target.value);
+  }
+
+  /*  function handleInput(e) {
+      sessionStorage.setItem('query', query);
+    }
+  */
+    
+  useEffect(() => {
+    if (localStorage.getItem('query') && pathname === '/movies') {
+      setQueryText(localStorage.getItem('query'));
+    }
+  }, []);
 
   return (
     <section className="searchform">
       <div className='searchform__container'>
-        <form className='searchform__form' noValidate> 
+        <form className='searchform__form' noValidate onSubmit={handleSubmit}> 
           <input 
             className='searchform__input' 
-            placeholder='Фильм' 
+            placeholder='Фильм'
             required 
             id="query"
             name="query"
             type="text"
             onChange={handleChange}
-          />
+            /* onInput={handleInput} */
+            value={queryText || ""}
+            >
+            </ input>
           <button className='searchform__button' type='submit'>Поиск</button>
         </form>
-        <span
-            className={`searchform__input-error query-error ${
-              isValid ? "" : "searchform__input-error_visible"
-            }`}
-          >
-            {errors.query}
-          </span>
-        <FilterCheckbox />
+        {isQueryError ? (<span className="searchform__input-error searchform__input-error_visible">Нужно ввести ключевое слово</span>
+        ) : (
+          <span className="searchform__input-error"></span>
+        )}
+        <FilterCheckbox onCheckbox={props.onCheckbox} isCheckbox={props.isCheckbox}/>
         <div className='searchform__line'></div>
       </div>
     </section>

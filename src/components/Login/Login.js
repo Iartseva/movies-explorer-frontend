@@ -6,15 +6,22 @@ import './Login.css';
 import '../Form/Form.css';
 
 function Login(props) {
-  const { values, handleChange, errors, isValid, /* setValues, resetForm */ } =
+  const { values, handleChange, errors, isValid, resetForm } =
   useValidation({
-    name: "",
     email: "",
     password: "",
   });
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (isValid) {
+      props.handleLogin(values.email, values.password);
+    }
+    //resetForm();
+  }
+
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
         <h2 className="form__title">Рады видеть!</h2>
         <label className="form__input-label">
           E-mail
@@ -24,11 +31,12 @@ function Login(props) {
             name="email"
             type="email"
             placeholder="Email"
-            autoComplete="username"
+           // autoComplete="username"
             minLength={4}
             required
             onChange={handleChange}
             value={values.email || ""}
+            pattern="\S+@\S+\.\S+"
           />
           <span
             className={`form__input-error email-error ${
@@ -59,16 +67,23 @@ function Login(props) {
             {errors.password}
           </span>
         </label>
+        <span
+            className={`form__request-error ${
+              !props.isRequestError ? "" : "form__request-error_visible"
+            }`}
+          >
+            {props.requestErrorText}
+          </span>
         <button
-          className="form__button-submit form__button-submit_type_login"
+          className={`form__button-submit form__button-submit_type_login ${isValid ? '' : 'form__button-submit_disabled'}`}
           type="submit"
-          //onClick={props.handleRegister}
+          disabled={!isValid}
         >
           Войти
         </button>
         <p className="form__redirect">
         Ещё не зарегистрированы? 
-          <Link to='signup' className="form__redirect-link">
+          <Link to='/signup' className="form__redirect-link">
             Зарегистрироваться
           </Link>
         </p>

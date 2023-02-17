@@ -6,7 +6,7 @@ import logo from "../../images/logo-form.svg"
 function Form(props) {
   return (
     <section className="form">
-      <form className="form-container">
+      <form className="form-container" onSubmit={props.onSubmit} noValidate>
       <Link to="/" className="form__logo">
         <img alt="логотип проекта" src={logo}></img>
       </Link>
